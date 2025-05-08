@@ -1,15 +1,6 @@
-
-#Algorithm
-#S-1 : Standardize the dataset to have zero mean and unit variance.
-#S-2 : Compute the covariance matrix of the standardized data.
-#S-3 : Calculate eigenvalues and eigenvectors of the covariance matrix.
-#S-4 : Sort the eigenvalues and select the top principal components.
-#S-5 : Project the original data onto the selected principal components.
-
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
-
 def pca(X, num_components):
     scaler = StandardScaler()
     X_std = scaler.fit_transform(X)
@@ -21,7 +12,6 @@ def pca(X, num_components):
     principal_components = eigenvectors[:, :num_components]
     X_pca = np.dot(X_std, principal_components)
     return X_pca, eigenvalues[:num_components], principal_components
-
 def main():
     np.random.seed(25)
     X = np.random.rand(35, 2)  
@@ -34,6 +24,5 @@ def main():
     plt.show()
     print("Eigenvalues:", eigenvalues)
     print("Principal Components:\n", principal_components)
-
 if __name__ == "__main__":
     main()
